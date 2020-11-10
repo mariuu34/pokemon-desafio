@@ -1,0 +1,12 @@
+.bt {
+    margin: 20% 50%;
+    padding: 20px;
+    width: 200px;
+    height: 50px;
+}
+
+button {
+    height: 50px;
+    background-color: cornflowerblue;
+    border-radius: 10px ;
+}

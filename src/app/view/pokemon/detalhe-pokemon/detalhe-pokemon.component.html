@@ -1,0 +1,87 @@
+<form>
+    <div class="p-grid">
+        <div class="p-col-12">
+
+                <span>
+                    <img src='{{image}}' >
+                </span> 
+                <br>
+
+                <div style="display: flex;" >
+
+                    <div style="width: 60%;">
+
+                        <p-table [responsive]="false"                     
+                        [value]="pokemons">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th class="font-bold">Nome</th>
+                                    <th class="font-bold">Especie</th>
+                                    <th class="font-bold">Altura</th>
+                                    <th class="font-bold">Peso</th>
+                                    <th class="font-bold">Experiencia</th>
+                                </tr>
+                            </ng-template>
+    
+                            <ng-template pTemplate="body" let-pk>
+                                <tr class="text-center">
+                                    <td>{{pk.name | uppercase}}</td>
+                                    <td>{{pk.species.name | uppercase }}</td>
+                                    <td>{{converteUnidade(pk.height) }} M</td>
+                                    <td>{{converteUnidade(pk.weight) }} KG</td>
+                                    <td>{{pk.base_experience}} XP </td>
+    
+                                </tr>
+                            </ng-template>    
+                        </p-table>
+
+                    </div>
+                    <div style="width: 20%;">
+
+                        <p-table [responsive]="false"                     
+                        [value]="habilidades">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th class="font-bold">Habilidade</th>
+                                </tr>
+                            </ng-template>
+    
+                            <ng-template pTemplate="body" let-habil>
+                                <tr class="text-center">
+                                    <td>{{habil.ability.name | uppercase}}</td>
+                                </tr>
+                            </ng-template>
+    
+                        </p-table>
+
+                    </div>
+
+                    <div style="width: 20%;">
+
+                        <p-table [responsive]="false"                     
+                        [value]="tipos">
+    
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th class="font-bold">Tipo</th>
+                                </tr>
+                            </ng-template>
+    
+                            <ng-template pTemplate="body" let-tp>
+                                <tr class="text-center">
+                                    <td>{{tp.type.name | uppercase}}</td>
+                                </tr>
+                            </ng-template>
+    
+                        </p-table>   
+                        
+                    </div>
+   
+                </div>   
+
+            </div>
+
+
+        </div>   
+
+</form>

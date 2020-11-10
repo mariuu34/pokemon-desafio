@@ -1,0 +1,41 @@
+<form>
+    <div class="p-col-12" >
+         
+        <div class="card highlight-card card-small">
+            <img align="left" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png">
+            <a [routerLink]="['/home']"> HOME</a>
+            <a [routerLink]="['/pokemon/listagem-pokemon']" (click)='limpar()'> LISTAGEM </a>
+        </div>
+            
+        <p-table *ngIf="!isSelecionado"
+                [responsive]="true"
+                [value]="listaPokemons"
+                [lazy]="true"
+                (onLazyLoad)="changePage($event)"
+                [paginator]="true"
+                [rows]="pageSize"
+                [totalRecords]="totalElements">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th class="font-bold">Nome</th>
+                    <th class="font-bold">Detalhe</th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-pokemon>
+                <tr class="text-center">
+                    <td >{{pokemon.name | uppercase }}</td>
+                    <td > <button (click)='direciona(pokemon.url)'> Detalhes </button> </td>
+                </tr> 
+            </ng-template>  
+
+            <ng-template pTemplate="paginatorCenter"></ng-template>
+
+            <ng-template pTemplate="empty">Lista vazia</ng-template>
+        </p-table>  
+
+    </div>
+      
+    <app-detalhe-pokemon #detalhes [url]='url' *ngIf="isSelecionado" ></app-detalhe-pokemon>
+
+</form>
